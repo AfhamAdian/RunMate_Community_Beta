@@ -15,11 +15,11 @@ app.use(express.json());
 app.post("/createtable", async (req, res) => {
     try {
         // const {}
-        const p = await pool.query(`
-)`
+        const p = await pool.query(`SELECT *
+            FROM User`
         );
 
-        res.json(p);
+        res.json(p.rows);
 
     } catch (err) {
         console.error(err.message);
