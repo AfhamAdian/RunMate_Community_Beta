@@ -1,5 +1,6 @@
 import React from "react";
 import "./LoginPage.css";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
 
@@ -20,7 +21,7 @@ function LoginPage() {
                 <input type="password" placeholder="Password"></input>
                 <br></br>
                 <button className="login-button">
-                    Log in
+                <a href="http://localhost:3000/Navbar" className="login-link">Log in</a>
                 </button>
             </div>
             <div className="forgot-password">
