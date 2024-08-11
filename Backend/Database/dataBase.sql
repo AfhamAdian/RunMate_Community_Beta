@@ -1,4 +1,5 @@
 CREATE DATABASE RunMateDatabase;
+
 --User
 CREATE TABLE "user" (
     user_id SERIAL PRIMARY KEY,
@@ -8,21 +9,22 @@ CREATE TABLE "user" (
     user_name VARCHAR(255)
 );
 
-    --post
-    CREATE TABLE post (
+--post
+CREATE TABLE post (
     post_id SERIAL PRIMARY KEY,
     post_content TEXT,
     image TEXT,
     video TEXT,
     user_id INTEGER REFERENCES "user"(user_id) ON DELETE CASCADE
 );
---Like
 
+--Like
 CREATE TABLE "like" (
     post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
     user_id INTEGER REFERENCES "user"(user_id) ON DELETE CASCADE,
     PRIMARY KEY (post_id, user_id)
 );
+
 --comment
 CREATE TABLE comment (
     comment_id SERIAL PRIMARY KEY,
@@ -32,6 +34,7 @@ CREATE TABLE comment (
     post_id INTEGER REFERENCES post(post_id) ON DELETE CASCADE,
     user_id INTEGER REFERENCES "user"(user_id) ON DELETE CASCADE
 );
+
 --Friends
 CREATE TABLE friends (
     user_id_1 INTEGER REFERENCES "user"(user_id) ON DELETE CASCADE,
@@ -47,4 +50,3 @@ CREATE TABLE reply (
     comment_2_id INTEGER REFERENCES comment(comment_id) ON DELETE CASCADE,
     PRIMARY KEY (comment_1_id, comment_2_id)
 );
-
